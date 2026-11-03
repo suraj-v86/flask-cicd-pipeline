@@ -28,8 +28,21 @@ jobs:
                 
             - name: Build docker image
               run: |
-                docker build -t flask-cicd:v5 .
+                docker build -t flask-cicd:${{ github.sha }} . 
                 
-            - name: verify docker image
+            - name: run container
               run: |
-                docker images flask-cicd:v5    
+                docker run -d -p 5000:5000 \
+                 --name flask-cicd-container \
+                  flask-cicd:${{ github.sha }}    
+
+            - name: check the health
+              run: |
+                sleep 5
+                curl --fail http://localhost:5000/health      
+
+            - name: Cleanup container
+              if: always()
+              run: |
+               docker stop flask-cicd-container || true
+               docker rm flask-cicd-container || true
