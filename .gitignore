@@ -3,3 +3,8 @@
 __pycache__/
 *.tfstate
 .terraform/
+*.tfstate.*
+*.tfplan
+terraform.tfvars
+terraform.tfvars.json
+
