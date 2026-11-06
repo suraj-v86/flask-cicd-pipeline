@@ -39,7 +39,7 @@ jobs:
             - name: check the health
               run: |
                 sleep 5
-                curl --fail http://localhost:5000/health      
+                curl --fail http://localhost:5000/healthcheck      
 
             - name: Cleanup container
               if: always()
