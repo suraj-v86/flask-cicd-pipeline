@@ -20,7 +20,7 @@ spec:
       - name: ecr-registry
       containers:
       - name: flask-container
-        image: 832490156181.dkr.ecr.us-east-1.amazonaws.com/flask-cicd-repo:3a52f58883f4675088011c66199de5147e34dcd4
+        image: 832490156181.dkr.ecr.us-east-1.amazonaws.com/flask-cicd-repo:a99b19e8f886572355c9b4c00d32c6d43c602af5
         ports:
           - containerPort: 5000
                   
