@@ -23,4 +23,24 @@ spec:
         image: 832490156181.dkr.ecr.us-east-1.amazonaws.com/flask-cicd-repo:a99b19e8f886572355c9b4c00d32c6d43c602af5
         ports:
           - containerPort: 5000
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "250m"
+            memory: "256Mi"      
+
                   
