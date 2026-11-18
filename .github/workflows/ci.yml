@@ -42,11 +42,16 @@ jobs:
                 sleep 5
                 curl --fail http://localhost:5000/health
 
+            - name: Show container logs on failure
+              if: failure()
+              run: |
+                docker logs flask-cicd-container     
+
             - name: Cleanup container
               if: always()
               run: |
                docker stop flask-cicd-container || true
-               docker rm flask-cicd-container || true
+               docker rm flask-cicd-container || true           
 
             - name: Configure AWS credentials
               if: github.event_name == 'push'
