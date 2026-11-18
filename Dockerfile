@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN useraddd -m appuser
+RUN useradd -m appuser
 
 RUN pip install --no-cache-dir -r requirements.txt
 
